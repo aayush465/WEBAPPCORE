@@ -1,0 +1,63 @@
+﻿@model IEnumerable<QuizWebAppCore.Models.Team>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        Team List
+    </h1>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-plus"></i>  @Html.ActionLink("Create New", "Create")</li>
+    </ol>
+
+</section>
+<section class="content">
+    <div class="box p-10">
+
+
+        <table class="table table-bordered">
+            <tr class="btn-primary">
+                <th>
+                    Team Name
+                </th>
+
+                <th>
+                    Team Description
+                </th>
+                <th>
+                    Order
+                </th>
+
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr class="">
+
+                    <td class="nep1">
+                        @Html.DisplayFor(modelItem => item.TeamNameNp)
+                    </td>
+                    <td class="nep1">
+                        @Html.DisplayFor(modelItem => item.TeamDescription)
+                    </td>
+                    <td class="">
+                        @Html.DisplayFor(modelItem => item.TeamSequenceOrder)
+                    </td>
+
+                    <td>
+                        <a href=""></a>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.TeamId }, new { @class = "btn-primary btn-sm" })
+                        @*@Html.ActionLink("Details", "Details", new { id = item.TeamId } ,new {@class = "btn-success btn-sm"})*@
+                        @Html.ActionLink("Delete", "Delete", new { id = item.TeamId }, new { @class = "btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+    <div class="clearfix"></div>
+</section><!-- /.content -->

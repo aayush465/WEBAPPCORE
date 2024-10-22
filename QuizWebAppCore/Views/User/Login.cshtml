@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Login";
+
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- head contents remain unchanged -->
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-box-body">
+            <center class="companylogo">
+                <a href="#" class="logintitle" style="color:#C11318">
+                    <img src="~/images/amsoftlogo.png" alt="" />
+                </a>
+            </center>
+
+            <div class="p-15 formbox">
+                <p class="login-box-msg"></p>
+                @{
+                    if (!string.IsNullOrEmpty(ViewBag.Message))
+
+                    {
+                        <div class="alert alert-danger">
+                            <span style="font-size:14px;"><i class="fa fa-warning"></i> @ViewBag.Message</span>
+                        </div>
+                    }
+                }
+                @using (Html.BeginForm("Login", "User", FormMethod.Post)) // Correct action
+
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" placeholder="Username *" name="UserName" required="required">
+                        <span class="fa fa-envelope-o form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder="Password *" name="Password" required="required">
+                        <span class="fa fa-lock form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8"></div>
+                        <div class="col-xs-4">
+                            <button type="submit" class="btn btn-success btn-block btn-flat">Login</button>
+                        </div>
+                    </div>
+                    <input type="hidden" name="returnUrl" id="returnUrl" value="@ViewBag.ReturnUrl" />
+                }
+            </div>
+        </div>
+    </div>
+    <!-- scripts remain unchanged -->
+</body>
+</html>
